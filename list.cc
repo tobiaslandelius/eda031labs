@@ -42,41 +42,59 @@ void List::insertFirst(int d) {
 }
 
 void List::remove(int d, DeleteFlag df) {
-	switch(df) 	{
-		case List::DeleteFlag::LESS :
-			Node* current = first;
-			Node* before = nullptr;
-			
-			while (current != nullptr) {
-				if (current->value < d) {
+	Node* current = first;
+	Node* before = nullptr;
+	while (current != nullptr) {
+		switch (df) {
+			case List::DeleteFlag::LESS:
+			{
+				if (current -> value < d) {
 					if (before != nullptr) {
 						before -> next = current -> next;
 					}
 					delete current;
-					break;
+					--list_size;
+					return;
 				}
 			}
-		break;
-		case List::DeleteFlag::EQUAL : 
-			Node* current = first;
-			Node* before = nullptr;
-			
-			while (current != nullptr) {
+			case List::DeleteFlag::EQUAL:
+			{
 				if (current->value == d) {
 					if (before != nullptr) {
 						before -> next = current -> next;
 					}
 					delete current;
-					break;
+					--list_size;
+					return;
 				}
 			}
-		break;
-		default:
-		break;
+			case List::DeleteFlag::GREATER:
+			{
+				if (current->value > d) {
+					if (before != nullptr) {
+						before -> next = current -> next;
+					}
+					delete current;
+					--list_size;
+					return;
+				}
+			}
+		}
 	}
 }
 
 
 void List::print() const {
+	Node* current = first;
+	std::cout << "{";
+	while (current != nullptr) {
+		std::cout << current->value;
+		current = current -> next;
+		if (current != nullptr) {
+			std::cout << ", ";
+		}
+	}
+	std::cout << "}";
+	
 }
 
