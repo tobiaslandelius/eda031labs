@@ -11,13 +11,13 @@ int main(int argc, char* argv[]) {
 	
 	char ch;
 	unsigned char uch;
-	
+	fin.get(ch);
 	while (!fin.eof()) {
-		fin.get(ch);
 		uch = static_cast<unsigned char>(ch);
 		uch = Coding::decode(uch);
 		ch = static_cast<char>(uch);
 		fout.put(ch);
+		fin.get(ch);
 	}
 	
 	fin.close();

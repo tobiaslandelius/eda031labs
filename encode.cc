@@ -11,13 +11,12 @@ int main(int argc, char* argv[]) {
 	
 	char ch;
 	unsigned uch;
-	
+	fin.get(ch);
 	while (!fin.eof()) {
-		fin.get(ch);
 		uch = static_cast<unsigned char>(ch);
 		uch = Coding::encode(uch);
 		fout.put(uch);
-		std::cout << ch << " " << uch << std::endl;
+		fin.get(ch);
 	}
 	
 	fin.close();
