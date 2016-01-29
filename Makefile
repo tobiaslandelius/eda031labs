@@ -17,12 +17,14 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = ltest
+PROGS = ltest ctest
 
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 ltest: ltest.o list.o
+
+ctest: ctest.o coding.o
 
 # Phony targets
 .PHONY: all clean
