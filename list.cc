@@ -79,6 +79,8 @@ void List::remove(int d, DeleteFlag df) {
 					return;
 				}
 			}
+		before = current;
+		current = current -> next;
 		}
 	}
 }
