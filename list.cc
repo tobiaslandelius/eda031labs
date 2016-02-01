@@ -51,6 +51,8 @@ void List::remove(int d, DeleteFlag df) {
 				if (current -> value < d) {
 					if (before != nullptr) {
 						before -> next = current -> next;
+					} else {
+						first = current -> next;
 					}
 					delete current;
 					--list_size;
@@ -62,6 +64,8 @@ void List::remove(int d, DeleteFlag df) {
 				if (current->value == d) {
 					if (before != nullptr) {
 						before -> next = current -> next;
+					} else {
+						first = current -> next;
 					}
 					delete current;
 					--list_size;
@@ -73,6 +77,8 @@ void List::remove(int d, DeleteFlag df) {
 				if (current->value > d) {
 					if (before != nullptr) {
 						before -> next = current -> next;
+					} else {
+						first = current -> next;
 					}
 					delete current;
 					--list_size;
