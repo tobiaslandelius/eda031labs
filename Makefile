@@ -8,16 +8,16 @@ CC  = g++
 # if you use clang++ and wish to use libc++ instead of GNU's libstdc++.
 # -g is for debugging.
 CPPFLAGS =  -std=c++11
-CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wold-style-cast 
+CXXFLAGS =  -Og -Wall -Wextra -pedantic-errors -Wold-style-cast 
 CXXFLAGS += -std=c++11 
 CXXFLAGS += -g
-LDFLAGS =   -g 
+LDFLAGS =   -g -L. -llab1
 #CPPFLAGS += -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = ltest encode decode
+PROGS = ltest encode decode hello
 
 all: $(PROGS)
 
@@ -27,6 +27,8 @@ ltest: ltest.o list.o
 encode: encode.o coding.o
 
 decode: decode.o coding.o
+
+hello: hello.o
 
 # Phony targets
 .PHONY: all clean
