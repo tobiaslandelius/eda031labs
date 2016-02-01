@@ -1,7 +1,7 @@
 #include <iostream>
 #include "list.h"
 
-List::List() : first(nullptr) {
+List::List() : first(nullptr), list_size(0) {
 }
 
 List::~List() {
