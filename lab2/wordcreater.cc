@@ -7,6 +7,7 @@
 #include "dictionary.h"
 #include <cctype>
 #include <clocale>
+#include <vector>
 
 using namespace std;
 
@@ -16,8 +17,6 @@ int main() {
 	
 	ifstream ifs ("words");
 	ofstream ofs ("words.txt");
-	string* triagrams;
-
 
 	if (ifs.is_open()) {
 		while (ifs >> word) {
@@ -30,7 +29,7 @@ int main() {
    			}
 
 			if (length > 2) {
-				triagrams = new string[length - 2];
+				vector<string> triagrams(length - 2);
 
 				// Split into trigrams
 				for (int i = 0; i < length - 2; i++) {
@@ -38,7 +37,7 @@ int main() {
 				}
 
 				// Sort
-				sort(triagrams, triagrams + length - 2);
+				sort(triagrams.begin(), triagrams.end());
 
 				// Write
 				ofs << word << " " << length;
@@ -46,7 +45,6 @@ int main() {
 					ofs << " " << triagrams[i];
 				}
 				ofs << endl;
-				
  				read_words++;
 			}
 		}
