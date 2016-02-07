@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include "dictionary.h"
+#include "trigram.h"
 
 using namespace std;
 
@@ -35,4 +36,15 @@ vector<string> Dictionary::get_suggestions(const string &word) const {
   cout << word;
   vector<string> suggestions;
   return suggestions;
+}
+
+void Dictionary::add_trigram_suggestions(std::vector<std::string> &suggestions,
+                                         const std::string word) {
+  std::vector<string> t = Trigram::trigrams(word);
+  unsigned int requiredMatches = t.size() / 2;
+  int length = word.length();
+  for (int i = length - 1; i != length + 2; ++i)
+    for (Word w : words[i])
+      if (w.get_matches(t) >= requiredMatches)
+        suggestions.push_back(w.get_word());
 }
