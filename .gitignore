@@ -7,3 +7,5 @@ decode
 ltest
 lab2/*.txt
 preprocessor
+wordcreater
+spell
