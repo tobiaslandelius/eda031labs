@@ -17,13 +17,15 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = preprocessor
+PROGS = preprocessor spell
 
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 
 preprocessor: preprocessor.o trigram.o
+
+spell: dictionary.o word.o spell.o
 
 # Phony targets
 .PHONY: all clean
