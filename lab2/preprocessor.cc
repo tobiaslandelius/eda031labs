@@ -1,20 +1,26 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "trigram.h"
 
 using namespace std;
 
 int main() {
-	std::ifstream fin("words");
-	std::ofstream fout("word.txt");
-	
-	std::string word;
-	int i=0;
-	while (getline(fin, word)) {
-		++i;
-	}
-	std::cout << i << std::endl;
-	fin.close();
-	fout.close();
-	return 0;
+  ifstream fin("words");
+  ofstream fout("word.txt");
+
+  string word;
+  while (getline(fin, word)) {
+    fout << word;
+    fout << " ";
+    fout << (word.length() - 2);
+    fout << " ";
+    for (string sub : Trigram::trigrams(word)) {
+      fout << sub;
+    }
+    fout << "\n";
+  }
+  fin.close();
+  fout.close();
 }
