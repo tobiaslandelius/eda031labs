@@ -5,3 +5,5 @@
 encode
 decode
 ltest
+lab2/*.txt
+preprocessor
