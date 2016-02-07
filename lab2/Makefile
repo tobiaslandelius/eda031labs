@@ -27,7 +27,7 @@ preprocessor: preprocessor.o trigram.o
 
 wordcreater: wordcreater.o
 
-dicttest: dicttest.o dictionary.o
+dicttest: dicttest.o dictionary.o word.o
 
 # Phony targets
 .PHONY: all clean

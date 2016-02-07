@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include "word.h"
@@ -16,6 +17,19 @@ string Word::get_word() const {
 
 // Not done!
 unsigned int Word::get_matches(const vector<string>& t) const {
-	vector<string> trigrams = trigrams(t);
-	return trigrams.size();
+	int count = 0;
+	unsigned int i = 0, j = 0;
+
+	while (i < t.size() && j < trigrams.size()) {
+		int comp = t[i].compare(trigrams[j]);
+		if (comp < 0) {
+			i++;
+		} else if (comp > 0) {
+			j++;
+		} else {
+			count++;
+			i++;
+		}
+	}
+	return count;
 }
