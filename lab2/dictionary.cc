@@ -5,10 +5,17 @@
 #include <algorithm>
 #include "word.h"
 #include "dictionary.h"
+#include <unordered_set>
 
 using namespace std;
 
-Dictionary::Dictionary() {
+Dictionary::Dictionary() {	
+	wordset = {};
+	ifstream ifs ("words");
+	string word;
+	while (ifs >> word) {
+		wordset.insert(word);
+	}
 }
 
 bool Dictionary::contains(const string& word) const {

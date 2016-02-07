@@ -17,7 +17,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = preprocessor wordcreater
+PROGS = preprocessor wordcreater dicttest
 
 all: $(PROGS)
 
@@ -26,6 +26,8 @@ all: $(PROGS)
 preprocessor: preprocessor.o trigram.o
 
 wordcreater: wordcreater.o
+
+dicttest: dicttest.o dictionary.o
 
 # Phony targets
 .PHONY: all clean
