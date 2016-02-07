@@ -4,14 +4,18 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include "word.h"
 
 class Dictionary {
 public:
-	Dictionary();
-	bool contains(const std::string& word) const;
-	std::vector<std::string> get_suggestions(const std::string& word) const;
+  Dictionary();
+  bool contains(const std::string &word) const;
+  std::vector<std::string> get_suggestions(const std::string &word) const;
+  static const unsigned int allowedLength = 25;
+
 private:
-	std::unordered_set<std::string> words;
+  std::unordered_set<std::string> wordlist;
+  std::vector<Word> words[allowedLength - 1];
 };
 
 #endif
