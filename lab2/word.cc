@@ -6,7 +6,7 @@ using namespace std;
 
 Word::Word(const string& w, const vector<string>& t) {
 	word = w;
-	tgrams = t;
+	trigrams = t;
 }
 
 string Word::get_word() const {
@@ -14,5 +14,5 @@ string Word::get_word() const {
 }
 
 unsigned int Word::get_matches(const vector<string>& t) const {
-	return tgrams.size();
+	return trigrams.size();
 }

@@ -17,7 +17,7 @@ public:
 	unsigned int get_matches(const std::vector<std::string>& t) const;
 private:
 	std::string word;
-	std::vector<std::string> tgrams;
+	std::vector<std::string> trigrams;
 };
 
 #endif
