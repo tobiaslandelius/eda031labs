@@ -8,16 +8,15 @@ using namespace std;
 
 int main() {
   ifstream fin("words");
-  ofstream fout("word.txt");
+  ofstream fout("words.txt");
 
   string word;
   while (getline(fin, word)) {
-    fout << word;
-    fout << " ";
-    fout << (word.length() - 2);
-    fout << " ";
-    for (string sub : Trigram::trigrams(word)) {
-      fout << sub;
+    vector<string> trigrams = Trigram::trigrams(word);
+    fout << word << " " << trigrams.size();
+
+    for (string sub : trigrams) {
+      fout << " " << sub;
     }
     fout << "\n";
   }
