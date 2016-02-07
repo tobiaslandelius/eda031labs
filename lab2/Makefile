@@ -23,7 +23,7 @@ all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 
-preprocessor: preprocessor.o
+preprocessor: preprocessor.o trigram.o
 
 wordcreater: wordcreater.o
 
