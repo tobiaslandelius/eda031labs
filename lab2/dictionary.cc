@@ -36,6 +36,7 @@ vector<string> Dictionary::get_suggestions(const string &word) const {
   vector<string> suggestions;
   add_trigram_suggestions(suggestions, word);
   rank_suggestions(suggestions, word);
+  trim_suggestions(suggestions);
   return suggestions;
 }
 
@@ -65,6 +66,10 @@ void Dictionary::rank_suggestions(std::vector<std::string> &suggestions,
   };
 
   sort(suggestions.begin(), suggestions.end(), Compare(dist));
+}
+
+void Dictionary::trim_suggestions(std::vector<std::string> &suggestions) const {
+  suggestions.resize(5);
 }
 
 unsigned int Dictionary::distance(const std::string &s1,
