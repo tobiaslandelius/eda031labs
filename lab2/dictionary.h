@@ -17,7 +17,7 @@ private:
   std::unordered_set<std::string> wordlist;
   std::vector<Word> words[allowedLength - 1];
   void add_trigram_suggestions(std::vector<std::string> &suggestions,
-                               const std::string word);
+                               const std::string word) const;
 };
 
 #endif
