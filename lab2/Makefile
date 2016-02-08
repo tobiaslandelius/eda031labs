@@ -25,7 +25,7 @@ all: $(PROGS)
 
 preprocessor: preprocessor.o trigram.o
 
-spell: dictionary.o word.o spell.o
+spell: dictionary.o word.o spell.o trigram.o
 
 # Phony targets
 .PHONY: all clean
