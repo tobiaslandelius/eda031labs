@@ -77,8 +77,8 @@ unsigned int Dictionary::distance(const std::string &s1,
   unsigned int d[allowedLength + 1][allowedLength + 1];
 
   for (int i = 0; i != allowedLength + 1; ++i) {
-    d[0][i] = 0;
-    d[i][0] = 0;
+    d[0][i] = i;
+    d[i][0] = i;
   }
 
   unsigned int diag = 0;
