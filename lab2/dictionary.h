@@ -21,7 +21,7 @@ class Dictionary {
   void rank_suggestions(std::vector<std::string> &suggestions,
                         const std::string word) const;
 
-  unsigned int distance(std::string &s1, const std::string &s2);
+  unsigned int distance(const std::string &s1, const std::string &s2) const;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <unordered_map>
 #include "dictionary.h"
 #include "trigram.h"
 
@@ -51,12 +52,22 @@ void Dictionary::add_trigram_suggestions(std::vector<std::string> &suggestions,
 
 void Dictionary::rank_suggestions(std::vector<std::string> &suggestions,
                                   const std::string word) const {
-  std::vector<pair<unsigned int, string>> v;
-  for (string s : suggestions) v.push_back(make_pair(distance(s, word), s));
-  sort(v.begin(), v.end());
+  unordered_map<string, int> dist;
+
+  for (string s : suggestions)
+    dist.insert(make_pair(s, distance(s, word)));
+
+  struct Compare {
+    Compare(unordered_map<string, int> d) { this->d = d; }
+    bool operator()(string i, string j) { return (d[i] < d[j]); }
+
+    unordered_map<string, int> d;
+  };
+
+  sort(suggestions.begin(), suggestions.end(), Compare(dist));
 }
 
-unsigned int Dictionary::distance(std::string &s1,
+unsigned int Dictionary::distance(const std::string &s1,
                                   const std::string &s2) const {
   unsigned int d[allowedLength + 1][allowedLength + 1];
 
@@ -74,7 +85,8 @@ unsigned int Dictionary::distance(std::string &s1,
       left = d[i][j - 1] + 1;
       above = d[i - 1][j] + 1;
       diag = d[i - 1][j - 1];
-      if (s1[i] != s2[j]) ++diag;
+      if (s1[i] != s2[j])
+        ++diag;
       d[i][j] = min(left, min(above, diag));
     }
   }
