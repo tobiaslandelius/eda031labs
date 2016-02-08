@@ -6,12 +6,10 @@
 using namespace std;
 
 class Trigram {
+ public:
+  static vector<string> trigrams(const string& word);
 
-        public:
-		
-		static vector<string> trigrams (const string& word);
-		
-	private:
-	};
+ private:
+};
 
 #endif

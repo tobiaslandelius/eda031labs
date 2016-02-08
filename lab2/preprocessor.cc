@@ -14,7 +14,6 @@ int main() {
 
   string word;
   while (getline(fin, word)) {
-
     transform(word.begin(), word.end(), word.begin(), ::tolower);
 
     vector<string> trigrams = Trigram::trigrams(word);
