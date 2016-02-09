@@ -15,7 +15,7 @@ Dictionary::Dictionary() {
     word = w;
     fin >> w;
     n = stoi(w);
-    std::vector<string> trigrams;
+    vector<string> trigrams;
     for (int i = 0; i != n; ++i) {
       fin >> w;
       trigrams.push_back(w);
@@ -39,9 +39,9 @@ vector<string> Dictionary::get_suggestions(const string &word) const {
   return suggestions;
 }
 
-void Dictionary::add_trigram_suggestions(std::vector<std::string> &suggestions,
-                                         const std::string word) const {
-  std::vector<string> t = Trigram::trigrams(word);
+void Dictionary::add_trigram_suggestions(vector<string> &suggestions,
+                                         const string word) const {
+  vector<string> t = Trigram::trigrams(word);
   unsigned int requiredMatches = t.size() / 2;
   int length = word.length();
   for (int i = length - 1; i != length + 2; ++i)
@@ -50,8 +50,8 @@ void Dictionary::add_trigram_suggestions(std::vector<std::string> &suggestions,
         suggestions.push_back(w.get_word());
 }
 
-void Dictionary::rank_suggestions(std::vector<std::string> &suggestions,
-                                  const std::string word) const {
+void Dictionary::rank_suggestions(vector<string> &suggestions,
+                                  const string word) const {
   unordered_map<string, int> dist;
 
   for (string s : suggestions)
@@ -67,12 +67,11 @@ void Dictionary::rank_suggestions(std::vector<std::string> &suggestions,
   sort(suggestions.begin(), suggestions.end(), Compare(dist));
 }
 
-void Dictionary::trim_suggestions(std::vector<std::string> &suggestions) const {
+void Dictionary::trim_suggestions(vector<string> &suggestions) const {
   suggestions.resize(5);
 }
 
-unsigned int Dictionary::distance(const std::string &s1,
-                                  const std::string &s2) const {
+unsigned int Dictionary::distance(const string &s1, const string &s2) const {
   unsigned int d[allowedLength + 1][allowedLength + 1];
 
   for (int i = 0; i != allowedLength + 1; ++i) {
