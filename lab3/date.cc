@@ -68,6 +68,8 @@ istream& operator>>(istream& is, Date& date) {
 	is >> month;
 	if (is.get() != '-') {is.setstate(ios_base::failbit); return is;}
 	is >> day;
+
+	// Kolla om strängen e slut.
 	
 	date = Date(year, month, day);
 	return is;
