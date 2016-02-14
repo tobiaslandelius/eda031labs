@@ -11,5 +11,4 @@ int main() {
 
 	cout << endl << "largest below 100 000" << endl;
 	p.print_largest();
-
 }

@@ -7,3 +7,5 @@ decode
 ltest
 lab2/*.txt
 preprocessor
+lab3/primetest
+lab3/tagtest
