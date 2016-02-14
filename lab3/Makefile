@@ -17,7 +17,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = tagtest primetest
+PROGS = tagtest primetest date_test
 
 all: $(PROGS)
 
@@ -26,6 +26,8 @@ all: $(PROGS)
 tagtest: tagremover.o
 
 primetest: prime.o
+
+date_test: date.o
 
 # Phony targets
 .PHONY: all clean
