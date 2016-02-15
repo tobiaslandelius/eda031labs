@@ -13,14 +13,14 @@ Dictionary::Dictionary() {
   int n = 0;
   while (fin >> w) {
     word = w;
-    fin >> w;
-    n = stoi(w);
+    fin >> n;
     vector<string> trigrams;
     for (int i = 0; i != n; ++i) {
       fin >> w;
       trigrams.push_back(w);
     }
-    words[word.length()].push_back(Word(word, trigrams));
+    if (word.length()> allowedLength ) continue;
+    words[word.length()].emplace_back(word, trigrams);
     wordlist.insert(word);
   }
   fin.close();
@@ -43,11 +43,14 @@ void Dictionary::add_trigram_suggestions(vector<string> &suggestions,
                                          const string word) const {
   vector<string> t = Trigram::trigrams(word);
   unsigned int requiredMatches = t.size() / 2;
-  int length = word.length();
-  for (int i = length - 1; i != length + 2; ++i)
-    for (Word w : words[i])
+  unsigned int length = word.length();
+  for (unsigned int i = length - 1; i != length + 2; ++i){
+    if (i > allowedLength) break;
+    for (const Word& w : words[i])
       if (w.get_matches(t) >= requiredMatches)
         suggestions.push_back(w.get_word());
+    
+  }
 }
 
 void Dictionary::rank_suggestions(vector<string> &suggestions,
@@ -68,6 +71,7 @@ void Dictionary::rank_suggestions(vector<string> &suggestions,
 }
 
 void Dictionary::trim_suggestions(vector<string> &suggestions) const {
+  if (suggestions.size()<5) return;
   suggestions.resize(5);
 }
 
@@ -88,7 +92,7 @@ unsigned int Dictionary::distance(const string &s1, const string &s2) const {
       left = d[i][j - 1] + 1;
       above = d[i - 1][j] + 1;
       diag = d[i - 1][j - 1];
-      if (s1[i] != s2[j])
+      if (s1[i-1] != s2[j-1])
         ++diag;
       d[i][j] = min(left, min(above, diag));
     }

@@ -19,11 +19,12 @@ int main() {
     vector<string> trigrams = Trigram::trigrams(word);
     fout << word << " " << trigrams.size();
 
-    for (string sub : trigrams) {
+    for (const string& sub: trigrams) {
       fout << " " << sub;
     }
-    fout << "\n";
+    fout << endl;
   }
   fin.close();
   fout.close();
+  return 0;
 }
