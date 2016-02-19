@@ -17,19 +17,13 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = tagtest primetest date_test tostring
+PROGS = nstest
 
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 
-tagtest: tagremover.o
-
-primetest: prime.o
-
-date_test: date.o
-
-tostring: tostring.o
+nstest: vns.o hns.o umns.o mns.o
 
 # Phony targets
 .PHONY: all clean
