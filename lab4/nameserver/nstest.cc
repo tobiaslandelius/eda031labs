@@ -37,4 +37,10 @@ int main() {
 	test(mns);
 	cout << "Map passed ..." << endl;
 	
+	/*
+	* Test the unordered map name server.
+	*/
+	UMNS umns;
+	test(umns);
+	cout << "Unordered map passed ..." << endl;
 }

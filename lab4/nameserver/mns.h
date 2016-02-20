@@ -2,7 +2,6 @@
 #define MNS_H
 
 #include "nameserverinterface.h"
-#include <vector>
 #include <map>
 
 using namespace std;

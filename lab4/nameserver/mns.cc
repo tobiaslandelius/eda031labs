@@ -1,6 +1,7 @@
 #include "mns.h"
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -13,9 +14,14 @@ void MNS::insert(const HostName& host, const IPAddress& ip) {
 }
 
 bool MNS::remove(const HostName& host) {
-	return nsmap.erase(host) == 1;
+	return nsmap.erase(host);
 }
 
 IPAddress MNS::lookup(const HostName& host) const {
-	return nsmap.find(host)->second;
+	map<HostName, IPAddress>::const_iterator it = nsmap.find(host);
+	
+	if (it != nsmap.end()) {
+		return it->second;
+	}
+	return NON_EXISTING_ADDRESS;
 }
