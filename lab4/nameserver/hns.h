@@ -14,7 +14,12 @@ public:
 	void insert(const HostName&, const IPAddress&);
 	bool remove(const HostName&);
 	IPAddress lookup(const HostName&) const;
-
+private:
+	int hash(const HostName& host) const;
+	void resize();
+	vector<vector<pair<HostName, IPAddress>>> nshmap;
+	int tablesize;
+	int nbrofpairs;
 };
 
 #endif
