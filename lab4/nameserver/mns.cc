@@ -1,7 +1,6 @@
 #include "mns.h"
 #include <vector>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
@@ -19,7 +18,7 @@ bool MNS::remove(const HostName& host) {
 
 IPAddress MNS::lookup(const HostName& host) const {
 	map<HostName, IPAddress>::const_iterator it = nsmap.find(host);
-	
+
 	if (it != nsmap.end()) {
 		return it->second;
 	}
