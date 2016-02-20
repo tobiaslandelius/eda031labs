@@ -37,7 +37,7 @@ bool HNS::remove(const HostName& host) {
 	vector<pair<HostName, IPAddress>>::iterator it = find_if(v.begin(), v.end(), CompareFirst(host));
 
 	if (it != v.end()) {
-		v.erase(it);
+		nshmap.at(hashnbr).erase(it);
 		--nbrofpairs;
 		return true;
 	}
