@@ -30,5 +30,11 @@ int main() {
 	test(vns);
 	cout << "Vector passed ..." << endl;
 
+	/*
+	* Test the map name server.
+	*/
+	MNS mns;
+	test(mns);
+	cout << "Map passed ..." << endl;
 	
 }

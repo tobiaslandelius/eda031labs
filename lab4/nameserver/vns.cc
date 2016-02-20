@@ -20,7 +20,6 @@ VNS::~VNS() {}
 
 void VNS::insert(const HostName& host, const IPAddress& ip) {
 	nsvector.push_back(make_pair(host, ip));
-	cout << "insert made" << endl;
 }
 
 bool VNS::remove(const HostName& host) {

@@ -14,7 +14,8 @@ public:
 	void insert(const HostName&, const IPAddress&);
 	bool remove(const HostName&);
 	IPAddress lookup(const HostName&) const;
-
+private:
+	unordered_map<HostName, IPAddress> nsumap;
 };
 
 #endif
