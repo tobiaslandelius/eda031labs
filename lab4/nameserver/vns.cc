@@ -35,13 +35,11 @@ bool VNS::remove(const HostName& host) {
 }
 
 IPAddress VNS::lookup(const HostName& host) const {
-	vector<pair<HostName, IPAddress>>::iterator it = 
+	vector<pair<HostName, IPAddress>>::const_iterator it = 
 		find_if(nsvector.begin(), nsvector.end(), CompareFirst(host));
-		
+
 	if (it != nsvector.end()) {
 		return it->second;
 	}
 	return NON_EXISTING_ADDRESS;
 }
-
-
