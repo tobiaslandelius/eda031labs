@@ -10,3 +10,9 @@ preprocessor
 lab3/primetest
 lab3/tagtest
 lab3/date_test
+lab4/bitset/bitsettest1
+lab4/bitset/bitsettest2
+lab4/bitset/simplebitsettest
+lab4/bitset/mybittest
+lab4/nameserver/nstest
+lab4/nameserver/nstime
