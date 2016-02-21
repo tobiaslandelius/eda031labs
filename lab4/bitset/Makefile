@@ -17,7 +17,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = simplebitsettest mybittest bitsettest1
+PROGS = simplebitsettest mybittest bitsettest1 bitsettest2
 
 all: $(PROGS)
 
@@ -28,6 +28,8 @@ simplebitsettest: simplebitset.o
 mybittest: simplebitset.o
 
 bitsettest1: bitset.o bitreference.o
+
+bitsettest2: bitset.o bitreference.o
 
 # Phony targets
 .PHONY: all clean
