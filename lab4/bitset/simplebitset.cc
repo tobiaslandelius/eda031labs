@@ -1,4 +1,5 @@
 #include "simplebitset.h"
+#include <iostream>
 
 SimpleBitset::SimpleBitset() : bits(0) {}
 

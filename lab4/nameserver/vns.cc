@@ -4,7 +4,6 @@
 #include <iostream>
 
 using namespace std;
-
 struct CompareFirst {
 	CompareFirst(HostName host) : host_(host) {}
 	bool operator()(const std::pair<HostName, IPAddress>& pair) const {
