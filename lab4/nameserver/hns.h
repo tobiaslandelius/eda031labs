@@ -15,10 +15,6 @@ public:
 	bool remove(const HostName&);
 	IPAddress lookup(const HostName&) const;
 private:
-<<<<<<< HEAD
-=======
-	int myhash(const HostName& host) const;
->>>>>>> 98e729021fbeaf5d96486587e53c666374d532dd
 	void resize();
 	vector<vector<pair<HostName, IPAddress>>> nshmap;
 	int tablesize;
