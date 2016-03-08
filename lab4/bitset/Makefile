@@ -1,4 +1,4 @@
-l# Define the compiler and the linker. The linker must be defined since
+# Define the compiler and the linker. The linker must be defined since
 # the implicit rule for linking uses CC as the linker. g++ can be
 # changed to clang++.
 CXX = g++
@@ -35,8 +35,7 @@ bitsettest2: bitset.o bitreference.o
 .PHONY: all clean
 
 # Standard clean
-clean:
-	rm -f *.o $(PROGS)
+clean: rm -f *.o $(PROGS)
 
 # Generate dependencies in *.d files
 %.d: %.cc
