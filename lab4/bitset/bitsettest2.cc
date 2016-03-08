@@ -21,6 +21,7 @@ int main() {
 	}
 	copy(bs.begin(), bs.end(), ostream_iterator<bool>(cout));
 	cout << endl;
+	cout << "Defined" << endl;
 	
 	// Find the first five bits that are set, complement them, print
 	size_t cleared = 0;

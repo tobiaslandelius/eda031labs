@@ -24,5 +24,3 @@ IPAddress UMNS::lookup(const HostName& host) const {
 	}
 	return NON_EXISTING_ADDRESS;
 }
-
-

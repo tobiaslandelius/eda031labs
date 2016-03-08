@@ -22,7 +22,7 @@ HNS::HNS(int i) {
 HNS::~HNS() {}
 
 void HNS::insert(const HostName& host, const IPAddress& ip) {
-	int hashnbr = hash(host);
+	int hashnbr = hasher(host) % tablesize;
 	nshmap.at(hashnbr).push_back(make_pair(host, ip));
 
 	double ratio = ++nbrofpairs / tablesize;
@@ -32,7 +32,7 @@ void HNS::insert(const HostName& host, const IPAddress& ip) {
 }
 
 bool HNS::remove(const HostName& host) {
-	int hashnbr = hash(host);
+	int hashnbr = hasher(host) % tablesize;
 	vector<pair<HostName, IPAddress>> v = nshmap.at(hashnbr);
 	vector<pair<HostName, IPAddress>>::iterator it = find_if(v.begin(), v.end(), CompareFirst(host));
 
@@ -45,7 +45,7 @@ bool HNS::remove(const HostName& host) {
 }
 
 IPAddress HNS::lookup(const HostName& host) const {	
-	int hashnbr = hash(host);
+	int hashnbr = hasher(host) % tablesize;
 	vector<pair<HostName, IPAddress>> v = nshmap.at(hashnbr);
 	vector<pair<HostName, IPAddress>>::iterator it = find_if(v.begin(), v.end(), CompareFirst(host));
 
@@ -53,14 +53,6 @@ IPAddress HNS::lookup(const HostName& host) const {
 		return it->second;
 	}
 	return NON_EXISTING_ADDRESS;
-}
-
-int HNS::hash(const HostName& host) const {
-	int sum = 0;
-	for (unsigned int i = 0; i < host.length(); i++) {
-		sum += int(host[i]);
-	}
-	return sum % tablesize;
 }
 
 void HNS::resize() {
