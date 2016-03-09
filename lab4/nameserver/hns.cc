@@ -34,11 +34,11 @@ void HNS::insert(const HostName& host, const IPAddress& ip) {
 
 bool HNS::remove(const HostName& host) {
 	int hashnbr = hasher(host) % tablesize;
-	vector<pair<HostName, IPAddress>> v = nshmap.at(hashnbr);
+	vector<pair<HostName, IPAddress>> &v = nshmap.at(hashnbr);
 	vector<pair<HostName, IPAddress>>::iterator it = find_if(v.begin(), v.end(), CompareFirst(host));
 
 	if (it != v.end()) {
-		nshmap.at(hashnbr).erase(it);
+		v.erase(it);
 		--nbrofpairs;
 		return true;
 	}
